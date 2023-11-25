@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -22,7 +23,7 @@ class UserController extends Controller
 
         if (Hash::check($req->password, $login->password)) {
             if ($login) {
-                Session::put('admin', $login->role);
+                Session::put('admin',"superadmin");
                 Session::flash('message', 'Login Successfully');
                 return redirect()->route('product.index');
             } else {
@@ -37,6 +38,16 @@ class UserController extends Controller
     public function logout()
     {
         Session::flush();
+        return redirect()->route('login.form');
+    }
+    public function registration_form()
+    {
+        return view('auth.registration');
+    }
+    public function registration_form_submit(UserRequest $request)
+    {
+        User::create($request->validated());
+        Session::flash('message', 'User Created Successfully');
         return redirect()->route('login.form');
     }
 }

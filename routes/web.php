@@ -21,6 +21,9 @@ Route::group(['middleware' => 'loginauth'], function () {
 Route::get('/', function () {
     return view('auth.login');
 })->name('login.form');
+
 Route::get('/logout', [UserController::class, 'logout'])->name('logout');
+Route::get('/registration/form', [UserController::class, 'registration_form'])->name('registration.form');
+Route::post('/registration/form/submit', [UserController::class, 'registration_form_submit'])->name('registration.form.submit');
 
 Route::post('/login', [UserController::class, "loginsubmit"])->name('login');
