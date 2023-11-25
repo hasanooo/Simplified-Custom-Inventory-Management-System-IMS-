@@ -10,14 +10,17 @@
 ### Main Project
 
 for this project: Frist You have to clone the project from git.then you have to set .env file.In .env file declare the database name.
- Then in command line or terminal you have to run this command: "php artisan db:seed"
+ Then in command line or terminal you have to run this command: 
+ 
+ "php artisan migrate"
+ "php artisan db:seed"
 Now in database table: users and products table get some data.
 Here user table get this data is :
 
  username:"raihanmahmud"
  password:"superadmin123"
  
- only this username and password have accesss.because I use seed in user table thats why their has no registration form.
+ this username and password have accesss.because I use seed in user table.Ortherwise you have to registration for log in.
  Also done all feature as per requirement.
  ### N.B 
  loging page frontend: I get from a template.which contains with Html and Bootstrap.4.2.1
